@@ -4,6 +4,7 @@ class CreateCars < ActiveRecord::Migration
       t.string :color, null:false
       t.date :year, null:false
       t.integer :mileage, null:false
+      t.text :description
 
       t.timestamps
     end
