@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :car do
-    color "MyString"
-    year "2014-01-01"
-    mileage 1
+    sequence(:color) {|n| "Black{n}" }
+    year 2001
+    mileage 15000
   end
 end
