@@ -1,5 +1,5 @@
 class Car < ActiveRecord::Base
   validates_presence_of :color
-  validates_presence_of :year
-  validates_presence_of :mileage
+  validates  :year, numericality: true, presence: true
+  validates :mileage, numericality: true, presence: true
 end

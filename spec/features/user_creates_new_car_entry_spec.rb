@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 feature 'User creates a new car entry' do
-  context 'goes to the index page' do
-    it 'create a new entry with valid attributes' do
+  context 'goes to the create entry page' do
+    it 'creates a new entry with valid attributes' do
       car = FactoryGirl.create(:car)
       description = "Honda Accord"
       visit new_car_path
@@ -19,5 +19,16 @@ feature 'User creates a new car entry' do
       expect(page).to have_content(car.description)
     end
 
+    it 'fails with invalid attributes' do
+      visit new_car_path
+
+      click_on "Create Car"
+
+      expect(page).to have_content "Color can't be blank"
+      expect(page).to have_content "Year can't be blank"
+      expect(page).to have_content "Mileage can't be blank"
+    end
   end
+
+
 end
