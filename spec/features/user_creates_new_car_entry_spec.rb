@@ -28,6 +28,21 @@ feature 'User creates a new car entry' do
       expect(page).to have_content "Year can't be blank"
       expect(page).to have_content "Mileage can't be blank"
     end
+
+    it 'fails when year is less than 1980' do
+      car = FactoryGirl.create(:car)
+
+      visit new_car_path
+
+      fill_in "Color", with: car.color
+      fill_in "Year", with: 1930
+      fill_in "Mileage", with: car.mileage
+
+      click_on "Create Car"
+
+      expect(page).to have_content "Year must be greater than or equal to 1980"
+
+    end
   end
 
 

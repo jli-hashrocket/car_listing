@@ -6,6 +6,6 @@ describe Car do
   it { should have_valid(:mileage).when(13430) }
 
   it { should_not have_valid(:color).when(nil,'') }
-  it { should_not have_valid(:year).when(nil,'',"Not a number") }
-  it { should_not have_valid(:year).when(nil,'',"Still not a number") }
+  it { should_not have_valid(:year).when(nil,'',"Not a number",1920) }
+  it { should_not have_valid(:mileage).when(nil,'',"Still not a number") }
 end
